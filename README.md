@@ -2,6 +2,8 @@
 
 A modular and aesthetic `tmux` setup managed by **TPM (Tmux Plugin Manager)**. This configuration focuses on a clean UI using the **Catppuccin** theme and workflow persistence.
 
+<img src="https://raw.githubusercontent.com/GabrielAlmeidaFlores/GabrielAlmeidaFlores/refs/heads/main/assets/Tmux-Configuration/Tmux%20Eyeshot.png">
+
 ---
 
 ## 📦 Core Plugins
