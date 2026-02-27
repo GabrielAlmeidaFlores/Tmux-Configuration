@@ -1,56 +1,60 @@
-# 💻 Tmux Configuration
+# Tmux Configuration
 
-A modular and aesthetic `tmux` setup managed by **TPM (Tmux Plugin Manager)**. This configuration focuses on a clean UI using the **Catppuccin** theme and workflow persistence.
+A personal tmux configuration focused on a smooth terminal workflow with Vim-style keybindings, plugin management via TPM, and the Tokyo Night theme.
 
----
+## Features
 
-## 📦 Core Plugins
+- **256-color & RGB support** — full color terminal experience
+- **Mouse support** — click to select panes/windows
+- **Vim-style copy mode** — navigate and copy text with familiar keybindings
+- **Smart splits** — new panes/windows open in the current working directory
+- **Session persistence** — automatic save/restore via tmux-resurrect & tmux-continuum
+- **Vim/Neovim integration** — seamless pane navigation with vim-tmux-navigator
 
-Currently, this setup utilizes the following plugins to enhance navigation and session management:
+## Plugins
 
-| Plugin | Description |
-| --- | --- |
-| [tpm](https://github.com/tmux-plugins/tpm) | The essential plugin manager for Tmux. |
-| [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) | Seamless navigation between Vim/Neovim and Tmux panes. |
-| [catppuccin/tmux](https://github.com/catppuccin/tmux) | Soothing pastel theme (v2.1.2) for the terminal. |
-| [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) | Persists tmux environments across system restarts. |
-| [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum) | Continuous saving of tmux sessions. |
+| Plugin | Purpose |
+|---|---|
+| [tpm](https://github.com/tmux-plugins/tpm) | Plugin manager |
+| [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) | Seamless Vim/tmux pane navigation |
+| [tmux-tokyo-night](https://github.com/fabioluciano/tmux-tokyo-night) | Tokyo Night status bar theme |
+| [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) | Save and restore sessions |
+| [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum) | Automatic session saving |
 
----
+## Installation
 
-## 🎨 Visuals & UI
+### Prerequisites
 
-The interface is customized with the **Catppuccin Mocha** palette:
+- tmux ≥ 2.6
+- [TPM](https://github.com/tmux-plugins/tpm)
+- `xclip` (for clipboard integration)
+- `zsh` (configured as the default shell)
 
-* **Window Style:** Modern `rounded` status indicators.
-* **Status Bar:** Minimalist design. The right side displays the active **application** and **session name**, while the left remains empty for focus.
-* **Persistence:** Automatic restoration is enabled (`@continuum-restore 'on'`), and pane contents are captured during saves.
+### Install TPM
 
----
-
-## 🛠️ Setup & Installation
-
-1. **Install TPM:**
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 ```
 
+### Apply the config
 
-2. **Configuration:**
-Add your settings to `~/.tmux.conf`.
-3. **Install Plugins:**
-* Open a Tmux session.
-* Press `Prefix` (default `Ctrl+b`) + `I` (capital I) to fetch and install the plugins.
+```bash
+git clone https://github.com/flores/Tmux-Configuration.git
+cp Tmux-Configuration/.tmux.conf ~/.tmux.conf
+tmux source ~/.tmux.conf
+```
 
+Then press `prefix + I` (capital i) inside tmux to install all plugins.
 
+## Key Bindings
 
----
+| Binding | Action |
+|---|---|
+| `prefix + "` | Split pane vertically (same directory) |
+| `prefix + %` | Split pane horizontally (same directory) |
+| `prefix + c` | New window (same directory) |
+| `prefix + [` → `v` | Begin visual selection in copy mode |
+| `prefix + [` → `y` | Copy selection to system clipboard |
+| `Ctrl+h/j/k/l` | Navigate panes (via vim-tmux-navigator) |
 
-## ⌨️ Shortcuts
-
-* **Navigation:** `Ctrl + h/j/k/l` to move between panes.
-* **Save Session:** `Prefix + Ctrl + s` (via Resurrect).
-* **Restore Session:** `Prefix + Ctrl + r` (via Resurrect).
-
-> **Note:** The TPM initialization line must always remain at the very end of your configuration file.
+> Default prefix is `Ctrl+b`.
